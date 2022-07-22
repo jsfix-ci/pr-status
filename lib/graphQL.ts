@@ -33,7 +33,9 @@ export class GraphQL {
   }
 
   async query<R>(query: string, variables: Variables): Promise<R> {
-    const response = await fetch(this.url, {
+    const response = await /* TODO: JSFIX could not patch the breaking change:
+    req.body can no longer be a string*/
+    fetch(this.url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
